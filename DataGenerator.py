@@ -12,13 +12,16 @@ def gen_data(n) -> List:
     return y
 
 
-def output(data):
-    plt.plot(data, 'x')
-    plt.title('Random Process')
-    plt.show()
+def gen_data_frame(n):
+    return pd.DataFrame(
+        {
+            'x': [np.random.exponential(2) for _ in range(n)],
+            'y': [random.gauss(0, 2) for _ in range(n)]
+        }
+    )
 
 
 if __name__ == '__main__':
     process = gen_data(100)
-    output(process)
+
 
