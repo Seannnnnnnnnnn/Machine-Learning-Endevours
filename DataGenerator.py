@@ -15,12 +15,31 @@ def gen_data(n) -> List:
 
 
 def gen_data_frame(n):
+    """
+    a function for generating data to perform linear regression 
+    """
     return pd.DataFrame(
         {
             'x': [np.random.exponential(2) for _ in range(n)],
             'y': [random.gauss(0, 2) for _ in range(n)]
         }
     )
+
+
+def gen_logistic_data(n, m):
+    """
+    a function for generating data to perform logistic regression 
+    param: n: size of cluster 1 
+    param: m: size of cluster 2
+    """
+    df = pd.DataFrame(
+        {
+            "x": np.append([random.uniform(0, 1) for _ in range(n)], [random.uniform(0.75, 1.5) for _ in range(m)]),
+            "y": np.append([random.uniform(0, 1) for _ in range(n)], [random.uniform(0.75, 1.5) for _ in range(m)])
+        }
+    )
+
+    return df
 
 
 if __name__ == '__main__':
