@@ -2,12 +2,12 @@
 an Implementation of the basic, gradient descent algorithm
 """
 from Regression.Functions import cost_func, partial_theta1, partial_theta2
-from Regression.DataGenerator import RandomProcess
+from Regression.DataGenerator import gen_data
 from matplotlib import pyplot as plt
 import numpy as np
 
 
-def gradient_descent(theta1, theta2, data, alpha=0.0001):
+def gradient_descent(theta1, theta2, data, alpha=0.000001):
 
     previous = 1
     correction = 1
@@ -31,21 +31,17 @@ def gradient_descent(theta1, theta2, data, alpha=0.0001):
 
 
 if __name__ == '__main__':
-    Y = RandomProcess()
-    observations = Y.get_data()
+    observations = gen_data(100)
 
     c, m = gradient_descent(0.5, 0.5, observations)
     print('c: ', c, 'm: ', m)
-#    output = []
-#    for _ in range(100):
-#        output.append(m * _ + c)
 
-    f = [observations[_][1] for _ in range(len(observations))]
-
-    x = np.linspace(0,100,100)
+    # generate a line to plot against our data
+    x = np.linspace(0, 100, 100)
     y = m*x+c
-    plt.plot(f, 'ro')
+
+    plt.plot(observations, 'ro')
     plt.plot(y)
-    plt.title("sorry gradient descent machine broke")
+    plt.title("Regression by Gradient Descent")
     plt.show()
 
