@@ -3,6 +3,8 @@ A python file for generating plots and data of a random variable
 """
 import random
 from typing import List
+import pandas as pd
+import numpy as np
 from matplotlib import pyplot as plt
 
 
