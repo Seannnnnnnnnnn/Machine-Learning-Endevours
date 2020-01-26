@@ -38,3 +38,14 @@ def cost_func(theta0, theta1, data: pd.DataFrame):
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
+
+def logistic_cost_func(theta0, theta1, data):
+    sum_component, n = 0, len(data.index)
+    y = data['y']
+    x = data['x']
+
+    for i in range(len(data.index)):
+        sum_component += y[i]*np.log(sigmoid(theta0 + theta1*x[i])) + (1-y[i])*np.log(1-sigmoid(theta0 + theta1*x[i]))
+
+    return -sum_component / n
+
