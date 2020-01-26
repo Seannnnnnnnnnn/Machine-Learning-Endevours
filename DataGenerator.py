@@ -14,7 +14,7 @@ def gen_data(n) -> List:
     return y
 
 
-def gen_data_frame(n):
+def gen_data_frame(n) -> pd.DataFrame:
     """
     a function for generating data to perform linear regression 
     """
@@ -26,7 +26,7 @@ def gen_data_frame(n):
     )
 
 
-def gen_logistic_data(n, m):
+def gen_logistic_data(n, m) -> pd.DataFrame:
     """
     a function for generating data to perform logistic regression 
     param: n: size of cluster 1 
@@ -41,6 +41,25 @@ def gen_logistic_data(n, m):
 
     return df
 
+
+def gen_logistic_data_vis(n, m):
+    """
+    A function for visualising generated logistic data 
+    """
+    df = pd.DataFrame(
+        {
+            "x1": [random.uniform(0, 1) for _ in range(n)],
+            "y1": [random.uniform(0, 1) for _ in range(n)],
+            "x2": [random.uniform(0.75, 1.5) for _ in range(m)],
+            "y2": [random.uniform(0.75, 1.5) for _ in range(m)],
+        }
+    )
+    
+    plt.scatter(df['x1'], df['y1'])
+    plt.scatter(df['x2'], df['y2'])
+    plt.show()
+   
+    return 
 
 if __name__ == '__main__':
     process = gen_data(100)
