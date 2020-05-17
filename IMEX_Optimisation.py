@@ -57,7 +57,6 @@ def k_means(k=5):
 
 def assignment(data_frame, centroid):
     """ Completes an assignment of the k-means iteration """
-    # TODO:             Q: Do I need 'sum' in line 64?   A: no, it completely fucks everything up
     for i in centroid.keys():
         data_frame['distance_from_{}'.format(i)] = \
             (
